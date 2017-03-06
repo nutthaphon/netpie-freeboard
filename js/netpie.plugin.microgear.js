@@ -13,7 +13,7 @@ if (typeof microgear === "undefined") {
         "display_name": "NETPIE Microgear",
         "description" : "Connect to NETPIE as a microgear to communicate real-time with other microgears in the same App ID. The microgear of this datasource is referenced by microgear[DATASOURCENAME]",
         "external_scripts" : [
-            "https://cdn.netpie.io/microgear.js"
+            "https://cdn.netpie.io/microgear-ptt.js"
         ],
         "settings"    : [
             {
