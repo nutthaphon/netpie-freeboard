@@ -183,7 +183,7 @@ function updateChart(chartDIV,datajson,option) {
 					filter = option.filter.replace(/ /g,'').split(',');
 			}
 		}
-		var colori = color;
+		var colori = [];
 		var chartdata = [];
 		var count = 0;
 		if (datajson) {
@@ -235,8 +235,11 @@ function updateChart(chartDIV,datajson,option) {
 								}
 							}
 							chartdata[count] = s;
-							if(i > numcolor){
+							if(count+1 > numcolor){
 								colori[count] = color[i%numcolor];
+						   	}
+						   	else{
+						   		colori[count] = color[filter.indexOf(datajson.data[i].attr)]
 						   	}
 							count = count + 1 ;
 						}
@@ -281,8 +284,11 @@ function updateChart(chartDIV,datajson,option) {
 							}
 						}
 						chartdata.push(s);
-						if(i>=color.length){
+						if(count>=color.length){
 							colori[colori.length] = color[i%numcolor];
+				   		}
+				   		else{
+				   			colori[count] = color[count]
 				   		}
 				   	count = count + 1 ;
 					}
