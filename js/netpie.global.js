@@ -35,12 +35,19 @@ if (typeof np_theme === "undefined") {
 }
 
 function saveTheme(){
-    var data = window.localStorage.getItem("netpie.freeboard.dashboard");
-    if(data!==null){
-        var datajson = JSON.parse(data);
+    var data = null;
+    var request = new XMLHttpRequest();
+    request.open('GET', 'http://thing.dataascii.com/netpie-freeboard/dashboard.json', false);  // `false` makes the request synchronous
+    request.send(null);
+
+    if (request.status === 200) {
+        var datajson = JSON.parse(request.responseText);
         datajson.theme = np_theme;
         window.localStorage.setItem("netpie.freeboard.dashboard", JSON.stringify(datajson));
-    }    
+    } else {
+        console.log(request.responseText);
+    }
+
 }
 
 freeboard.on('load_theme',function() {

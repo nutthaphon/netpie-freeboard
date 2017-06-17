@@ -1,0 +1,150 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "width": 1,
+   "row": {
+    "2": 1,
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "2": 2,
+    "3": 2,
+    "4": -17
+   },
+   "col_width": "2",
+   "widgets": [
+    {
+     "type": "FeedView",
+     "settings": {
+      "datasource": "datasources[\"microgearfb2\"][\"data\"]",
+      "type": "line",
+      "color": "",
+      "marker": true,
+      "multipleaxis": true,
+      "autogap": false,
+      "height_block": "240",
+      "height": "4"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 1,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "สถานะหลอดไฟ",
+      "value": "datasources[\"microgear\"][\"/NECTECTrainingDay/dht/esp8266\"].split(\",\")[2]==1",
+      "on_text": "เปิด",
+      "off_text": "ปิด"
+     }
+    },
+    {
+     "type": "Toggle",
+     "settings": {
+      "caption": "สวิทช์หลอดไฟ",
+      "state": "datasources[\"microgear\"][\"/NECTECTrainingDay/dht/esp8266\"].split(\",\")\n[2]==1",
+      "ontext": "เปิด",
+      "offtext": "ปิด",
+      "onaction": "microgear['microgear'].chat('esp8266','1')",
+      "offaction": "microgear['microgear'].chat('esp8266','0')",
+      "onCreatedAction": ""
+     }
+    },
+    {
+     "type": "text_widget",
+     "settings": {
+      "title": "ข้อมูลทั้งหมดที่ส่งจาก ESP8266",
+      "size": "regular",
+      "value": "datasources[\"microgear\"][\"/NECTECTrainingDay/dht/esp8266\"]",
+      "animate": true
+     }
+    },
+    {
+     "type": "text_widget",
+     "settings": {
+      "title": "ข้อมูลแสดงสถานะสวิทช์",
+      "size": "regular",
+      "value": "datasources[\"microgear\"][\"/NECTECTrainingDay/dht/esp8266\"].split(\",\")[2]",
+      "animate": true
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "ค่าความชื้น",
+      "value": "datasources[\"microgear\"][\"/NECTECTrainingDay/dht/esp8266\"].split(\",\")[0]",
+      "units": "%",
+      "min_value": 0,
+      "max_value": 100
+     }
+    },
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "อุณหภูมิ",
+      "value": "datasources[\"microgear\"][\"/NECTECTrainingDay/dht/esp8266\"].split(\",\")[1]",
+      "units": "C",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "microgearfb2",
+   "type": "netpie_feed",
+   "settings": {
+    "name": "microgearfb2",
+    "feedid": "NECTECTrainingFeed",
+    "apikey": "dPG5oXsZYk2JPMzL2UcXaDuDmt2otXUm",
+    "granularity_value": "15",
+    "granularity_unit": "seconds",
+    "since_value": "6",
+    "since_unit": "hours",
+    "interval": "15"
+   }
+  },
+  {
+   "name": "microgear",
+   "type": "netpie_microgear",
+   "settings": {
+    "name": "microgear",
+    "appid": "NECTECTrainingDay",
+    "key": "8lz4faCskqmP8YR",
+    "secret": "D95C8g4z4rHCsiVuB13gO0Etn",
+    "topics": "/#"
+   }
+  }
+ ],
+ "columns": 4,
+ "theme": "default"
+}
