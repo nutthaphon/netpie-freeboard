@@ -43,6 +43,8 @@ function saveTheme(){
             var datajson = JSON.parse(xhttp.responseText);
             datajson.theme = np_theme;
             window.localStorage.setItem("netpie.freeboard.dashboard", JSON.stringify(datajson));
+
+            freeboard.emit('load_theme');
         }
     };
     
@@ -81,5 +83,5 @@ freeboard.on('load_theme',function() {
     saveTheme();
 });
 
-freeboard.emit('load_theme');
+
 
