@@ -38,7 +38,7 @@ function saveTheme(){
     var data = null;
     var request = new XMLHttpRequest();
 
-    request.open('GET', '/dashboard.json', false);  // `false` makes the request synchronous
+    request.open('GET', 'http://thing.dataascii.com/netpie-freeboard/dashboard.json', false);  // `false` makes the request synchronous
     request.send(null);
 
     if (request.status === 200) {
