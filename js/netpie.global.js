@@ -44,7 +44,17 @@ function saveTheme(){
             datajson.theme = np_theme;
             window.localStorage.setItem("netpie.freeboard.dashboard", JSON.stringify(datajson));
 
-            freeboard.on('load_theme',function() {
+            
+        }
+    };
+    
+    xhttp.open("GET", "http://thing.dataascii.com/netpie-freeboard/dashboard.json", true);
+    xhttp.send();
+
+
+}
+
+freeboard.on('load_theme',function() {
                 var stylesheet = document.getElementById('netpie-theme-css');
                 var data = window.localStorage.getItem("netpie.freeboard.dashboard");
                 var datajson = JSON.parse(data);
@@ -73,15 +83,5 @@ function saveTheme(){
                 saveTheme();
             });
 
-            freeboard.emit('load_theme');
-        }
-    };
-    
-    xhttp.open("GET", "http://thing.dataascii.com/netpie-freeboard/dashboard.json", true);
-    xhttp.send();
-
-
-}
-
-
+freeboard.emit('load_theme');
 
